@@ -19,10 +19,9 @@
 module ms_tick (
     input  logic clk,
     input  logic reset,
-    output logic ms_div [16:0],  // used as mod-99,999 counter
     output logic ms_tick
 );
-
+  logic [16:0] ms_div;  // used as mod-99,999 counter
 
   always_ff @(posedge clk or posedge reset) begin
 
