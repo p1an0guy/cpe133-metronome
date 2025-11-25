@@ -60,15 +60,15 @@ bpm_input adjust_bpm(.clk(clk), .reset(reset), .button_up(bpm_button_up), .butto
   } state_type;
   state_type state;
 
-  always_ff @(posedge clk or posedge reset) begin
-    if (reset) begin
-      state <= STOP;
-    end else if (state == STOP && button_pressed) begin
-      state <= RUN;
-    end else if (state == RUN && button_pressed) begin
-      state <= STOP;
-    end
-  end
+//  always_ff @(posedge clk or posedge reset) begin
+//    if (reset) begin
+//      state <= STOP;
+//    end else if (state == STOP && button_pressed) begin
+//      state <= RUN;
+//    end else if (state == RUN && button_pressed) begin
+//      state <= STOP;
+//    end
+//  end
 
   assign beat_tick_active = (state == RUN) ? beat_tick : 1'b0;
 
