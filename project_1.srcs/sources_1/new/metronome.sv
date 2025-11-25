@@ -44,6 +44,7 @@ bpm_input adjust_bpm(.clk(clk), .reset(reset), .button_up(bpm_button_up), .butto
 
   // get a beat tick from tempo_generator module
   logic beat_tick;
+  logic beat_tick_active;
   tempo_generator gen (
       .clk(clk),
       .reset(reset),
@@ -69,5 +70,6 @@ bpm_input adjust_bpm(.clk(clk), .reset(reset), .button_up(bpm_button_up), .butto
     end
   end
 
-endmodule
+  assign beat_tick_active = (state == RUN) ? beat_tick : 1'b0;
 
+endmodule
