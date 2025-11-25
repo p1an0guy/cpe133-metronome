@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: Cal Poly
+// Engineer: Kai Hoag
 // 
 // Create Date: 11/24/2025 12:38:21 PM
 // Design Name: 
@@ -21,7 +21,7 @@
 
 // What I need
 //   - bpm[7:0]     : tempo in BPM
-//   - ts[4:0]      : beats per measure (time signature)
+//   - ts[3:0]      : beats per measure (time signature)
 //   - show_ts      : 0 = show BPM; 1 = show TS
 //   - downbeat     : 1-clock pulse at the first beat of each measure
 
@@ -29,7 +29,7 @@
 module seven_seg_display (
   input  logic        clk,        
   input  logic [7:0]  bpm,        
-  input  logic [4:0]  ts,         // (time signature, beats per measure)
+  input  logic [3:0]  ts,         // (time signature, beats per measure)
   input  logic        show_ts,    // 0=BPM, 1=TS
   input  logic        downbeat,   // 1-cycle pulse on measure start
   output logic [15:0] led,        // board LEDs (active-high)
@@ -47,13 +47,14 @@ module seven_seg_display (
     .led(led),
     .an(an), .seg(seg), .dp(dp)
   );
+
 endmodule
 
 
 module seg7_frontend_min (
   input  logic        clk,        // 100 MHz
   input  logic [7:0]  bpm,        
-  input  logic [4:0]  ts,         // (time signature)
+  input  logic [3:0]  ts,         // (time signature)
   input  logic        show_ts,    // 0=BPM, 1=TS
   input  logic        downbeat,   // 1-cycle pulse on measure start
 
@@ -63,14 +64,48 @@ module seg7_frontend_min (
   output logic        dp          // seven-seg dp (active-low)
 );
 
+  // backend values to 4 BCD digits (leftto right: d3 d2 d1 d0)
+  logic [3:0] d3, d2, d1, d0;
+  
+  display_format_bpm_or_ts u_fmt (
+    .bpm(bpm), .ts(ts), .show_ts(show_ts),
+    .d3(d3), .d2(d2), .d1(d1), .d0(d0)
+  );
+
+  seg7_control_case u_disp (
+    .clk_100MHz(clk),
+    .reset      (1'b0),   
+    .ones       (d0),
+    .tens       (d1),
+    .hundreds   (d2),
+    .thousands  (d3),
+    .seg        (seg),
+    .digit      (an),
+    .dp         (dp)
+  );
+
+  // LED FLASH: stretch downbeat so LEDs visibly blink
+  led_flash_on_pulse #(
+    .FLASH_MS(120),
+    .CLK_HZ(100_000_000),
+    .LEDS(16),
+    .MASK(16'hFFFF)
+  ) u_ledflash (
+    .clk     (clk),
+    .pulse_in(downbeat),
+    .led_out (led)
+  );
+  
+endmodule
+
 
 // bcd_u8  (Binary to Hundreds/Tens/Ones)
 module bcd_u8 (
   input  logic [7:0] bin,
   output logic [3:0] hund, tens, ones
 );
-  logic [7:0] q;
 
+  logic [7:0] q;
   always_comb begin
     // hundreds
     if (bin >= 8'd200)
@@ -103,38 +138,32 @@ module bcd_u8 (
     // ones
     ones = q - (tens * 8'd10);
   end
+  
 endmodule
 
 
 // display_format_bpm_or_ts  (BPM/TS to Four Decimal Digits)
 module display_format_bpm_or_ts (
   input  logic [7:0] bpm,
-  input  logic [4:0] ts,
+  input  logic [3:0] ts,
   input  logic       show_ts,
   output logic [3:0] d3, d2, d1, d0
 );
-  logic [3:0] h,t,o, ts_t, ts_o;
+  logic [3:0] h,t,o, ts_o;
   bcd_u8 u_bpm (.bin(bpm), .hund(h), .tens(t), .ones(o));
-  bcd_u8 u_ts  (.bin({3'b0, ts}), .hund(),  .tens(ts_t), .ones(ts_o));
+  bcd_u8 u_ts  (.bin({4'b0, ts}), .ones(ts_o));
 
   always_comb begin
     if (!show_ts) begin
       // [blank][hundreds][tens][ones]
       d3 = 4'hF; d2 = h;   d1 = t;   d0 = o;
     end else begin
-      // [blank][blank][TS tens][TS ones]
-      d3 = 4'hF; d2 = 4'hF; d1 = ts_t; d0 = ts_o;
+      // [blank][blank][blank][TS ones]
+      d3 = 4'hF; d2 = 4'hF; d1 = 4'hF; d0 = ts_o;
     end
   end
 endmodule
 
-  // backend values to 4 BCD digits (leftto right: d3 d2 d1 d0)
-  logic [3:0] d3, d2, d1, d0;
-  display_format_bpm_or_ts u_fmt (
-    .bpm(bpm), .ts(ts), .show_ts(show_ts),
-    .d3(d3), .d2(d2), .d1(d1), .d0(d0)
-  );
-  
   
 //  Uses a 17-bit timer to get ~1ms per digit at 100 MHz.
 //  Cycles digit_select = 0..3 -> selects ones/tens/hundreds/thousands.
@@ -221,33 +250,6 @@ module seg7_control_case(
 endmodule
 
 
-  seg7_control_case u_disp (
-    .clk_100MHz(clk),
-    .reset      (1'b0),   
-    .ones       (d0),
-    .tens       (d1),
-    .hundreds   (d2),
-    .thousands  (d3),
-    .seg        (seg),
-    .digit      (an),
-    .dp         (dp)
-  );
-
-  // LED FLASH: stretch downbeat so LEDs visibly blink
-  led_flash_on_pulse #(
-    .FLASH_MS(120),
-    .CLK_HZ(100_000_000),
-    .LEDS(16),
-    .MASK(16'hFFFF)
-  ) u_ledflash (
-    .clk     (clk),
-    .pulse_in(downbeat),
-    .led_out (led)
-  );
-endmodule
-
-
-
 module led_flash_on_pulse #(
   parameter int FLASH_MS = 120,
   parameter int CLK_HZ   = 100_000_000,
@@ -270,5 +272,3 @@ module led_flash_on_pulse #(
     led_out = (tmr != 0) ? MASK[LEDS-1:0] : '0;
   end
 endmodule
-
-
