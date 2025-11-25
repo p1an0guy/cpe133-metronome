@@ -44,6 +44,7 @@ module metronome (
 
   // get a beat tick from tempo_generator module
   logic beat_tick;
+  logic beat_tick_active;
   tempo_generator gen (
       .clk(clk),
       .reset(reset),
@@ -57,7 +58,7 @@ module metronome (
       .clk(clk),
       .reset(reset),
       .beats_per_measure(beats_per_measure),
-      .beat_tick(beat_tick),
+      .beat_tick(beat_tick_active),
       .downbeat(downbeat)
   );
 
@@ -101,5 +102,6 @@ module metronome (
     end
   end
 
-endmodule
+  assign beat_tick_active = (state == RUN) ? beat_tick : 1'b0;
 
+endmodule
