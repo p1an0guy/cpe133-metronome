@@ -47,7 +47,7 @@ module metronome (
     if (reset) begin
       bpm <= 9'd120;
     end else begin
-      if (button_increment && bpm < 9'd500) bpm <= bpm + 1;
+      if (button_increment && bpm < 9'd255) bpm <= bpm + 1;
       if (button_decrement && bpm > 9'd40) bpm <= bpm - 1;
     end
   end
