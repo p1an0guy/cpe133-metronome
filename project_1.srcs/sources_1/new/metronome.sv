@@ -23,6 +23,8 @@
 module metronome (
     input logic clk,
     input logic reset,
+    input logic bpm_button_up,
+    input logic bpm_button_down,
     output logic [8:0] bpm_out  // TO BE USED FOR FRONTEND
     // TODO: drive an output for time signature once we have that implemented 
 );
@@ -32,25 +34,24 @@ module metronome (
   // drive the output for bpm_out to be used by frontend processes
   assign bpm_out = bpm;
 
+//Interface with left & right buttons to adjust bpm
+logic bpm_button_up_pressed;
+logic bpm_button_down_pressed;
+button_logic bpm_button_up_debounced(.clk(clk), .reset(reset), .button_in(bpm_button_up), .button_out(bpm_button_up_pressed));
+button_logic bpm_button_down_debounced(.clk(clk), .reset(reset), .button_in(bpm_button_down), .button_out(bpm_button_down_pressed));
+
+bpm_input adjust_bpm(.clk(clk), .reset(reset), .button_up(bpm_button_up), .button_down(bpm_button_down), .bpm_out(bpm));
 
   // get a beat tick from tempo_generator module
   logic beat_tick;
   tempo_generator gen (
       .clk(clk),
       .reset(reset),
+      .button_up(bpm_up_button),
+      .button_down(bpm_down_button),
       .bpm(bpm),
       .beat_tick(beat_tick)
   );
-
-  // TODO: Issac Becker to implement interface with buttons
-  always_ff @(posedge clk or posedge reset) begin
-    if (reset) begin
-      bpm <= 9'd120;
-    end else begin
-      if (button_increment && bpm < 9'd500) bpm <= bpm + 1;
-      if (button_decrement && bpm > 9'd40) bpm <= bpm - 1;
-    end
-  end
 
   typedef enum logic [0:0] {
     RUN,
