@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Tue Nov 25 15:20:51 2025
+# Process ID         : 10040
+# Current directory  : C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.runs/impl_1
+# Command line       : vivado.exe -log metronome.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source metronome.tcl -notrace
+# Log file           : C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.runs/impl_1/metronome.vdi
+# Journal file       : C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.runs/impl_1\vivado.jou
+# Running On         : DESKTOP-S7FGGER
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26100
+# Processor Detail   : 12th Gen Intel(R) Core(TM) i7-1255U
+# CPU Frequency      : 2611 MHz
+# CPU Physical cores : 10
+# CPU Logical cores  : 12
+# Host memory        : 16849 MB
+# Swap memory        : 25950 MB
+# Total Virtual      : 42799 MB
+# Available Virtual  : 26700 MB
+#-----------------------------------------------------------
+source metronome.tcl -notrace
