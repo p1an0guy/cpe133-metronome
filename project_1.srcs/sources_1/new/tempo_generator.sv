@@ -48,6 +48,8 @@ module tempo_generator (
         if (millesecond_accumulator + bpm >= 60000) begin
           beat_tick <= 1;
           millesecond_accumulator <= millesecond_accumulator + bpm - 60000;
+        end else begin
+          millesecond_accumulator <= millesecond_accumulator + bpm;
         end
       end
 

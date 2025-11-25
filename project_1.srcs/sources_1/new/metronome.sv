@@ -23,6 +23,7 @@
 module metronome (
     input logic clk,
     input logic reset,
+    input logic beats_per_measure_minute_switcher,
 
     // information to be sent to frontend
     output logic [15:0] led,  // all 16 leds flash on downbeat
@@ -32,7 +33,7 @@ module metronome (
     input logic bpm_button_down
 );
   // initialize to 120 bpm
-  logic [8:0] bpm;
+  logic [7:0] bpm;
   logic [3:0] beats_per_measure;
   initial begin
     bpm <= 9'd120;
@@ -104,15 +105,15 @@ module metronome (
   } state_type;
   state_type state;
 
-  //  always_ff @(posedge clk or posedge reset) begin
-  //    if (reset) begin
-  //      state <= STOP;
-  //    end else if (state == STOP && button_pressed) begin
-  //      state <= RUN;
-  //    end else if (state == RUN && button_pressed) begin
-  //      state <= STOP;
-  //    end
-  //  end
+  always_ff @(posedge clk or posedge reset) begin
+    if (reset) begin
+      state <= STOP;
+    end else if (state == STOP && button_pressed) begin
+      state <= RUN;
+    end else if (state == RUN && button_pressed) begin
+      state <= STOP;
+    end
+  end
 
   assign beat_tick_active = (state == RUN) ? beat_tick : 1'b0;
 

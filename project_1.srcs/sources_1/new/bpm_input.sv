@@ -20,20 +20,20 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module bpm_input(
-input logic clk,
-input logic reset,
-input logic button_up,
-input logic button_down,
-output logic[7:0] bpm_out
-    );
-    
+module bpm_input (
+    input logic clk,
+    input logic reset,
+    input logic button_up,
+    input logic button_down,
+    output logic [7:0] bpm_out
+);
+
   always_ff @(posedge clk or posedge reset) begin
     if (reset) begin
       bpm_out <= 9'd120;
     end else begin
-      if (button_up && bpm_out < 9'd500) bpm_out <= bpm_out + 1;
-      if (button_down && bpm_out > 9'd40) bpm_out <= bpm_out - 1;
+      if (button_up && bpm_out < 8'd500) bpm_out <= bpm_out + 1;
+      if (button_down && bpm_out > 8'd40) bpm_out <= bpm_out - 1;
     end
   end
 endmodule

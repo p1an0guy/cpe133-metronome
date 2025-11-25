@@ -30,6 +30,7 @@ module downbeats (
   logic [3:0] beat_idx;
 
   always_ff @(posedge clk or posedge reset) begin
+    downbeat <= 0;
     if (reset) begin
       beat_idx <= 0;
     end else if (beat_tick) begin
