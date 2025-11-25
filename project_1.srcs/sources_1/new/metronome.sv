@@ -31,11 +31,9 @@ module metronome (
 
     // frontend
     output logic [15:0] led,  // all 16 leds flash on downbeat
-    output logic [3:0] an,  // seven-seg anodes (active low)
-    output logic [6:0] seg,  // seven-seg segments
-    output logic dp  // seven-seg dp
+    output logic [ 3:0] an,   // seven-seg anodes (active low)
+    output logic [ 6:0] seg   // seven-seg segments
 );
-
   // initialize to 120 bpm
   logic [8:0] bpm = 9'd120;
   // drive the output for bpm_out to be used by frontend processes
@@ -72,7 +70,7 @@ module metronome (
       .led(led),
       .an(an),
       .seg(seg),
-      .dp(dp)
+      .dp()
   );
 
   // TODO: Issac Becker to implement interface with buttons
