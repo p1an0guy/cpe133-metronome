@@ -23,8 +23,17 @@
 module metronome (
     input logic clk,
     input logic reset,
-    output logic [7:0] bpm_out  // TO BE USED FOR FRONTEND
-    // TODO: drive an output for time signature once we have that implemented 
+
+    // information to be sent to frontend
+    input beats_per_measure_minute_switcher,
+    output logic [7:0] bpm_out,
+    output logic [3:0] beats_per_measure,
+
+    // frontend
+    output logic [15:0] led,  // all 16 leds flash on downbeat
+    output logic [3:0] an,  // seven-seg anodes (active low)
+    output logic [6:0] seg,  // seven-seg segments
+    output logic dp  // seven-seg dp
 );
 
   // initialize to 120 bpm
@@ -42,6 +51,29 @@ module metronome (
       .beat_tick(beat_tick)
   );
 
+  // pass the beat_tick into downbeats and get a downbeat back
+  logic downbeat;
+  downbeats downbeats (
+      .clk(clk),
+      .reset(reset),
+      .beats_per_measure(beats_per_measure),
+      .beat_tick(beat_tick),
+      .downbeat(downbeat)
+  );
+
+  // pass the downbeat and beat_tick information into Kai's frontend
+  seven_seg_display frontend (
+      .clk(clk),
+      .bpm(bpm_out),
+      .ts(beats_per_measure),
+      .show_ts(beats_per_measure_minute_switcher),
+      .downbeat(downbeat),
+      .led(led),
+      .an(an),
+      .seg(seg),
+      .dp(dp)
+  );
+
   // TODO: Issac Becker to implement interface with buttons
   always_ff @(posedge clk or posedge reset) begin
     if (reset) begin
@@ -52,6 +84,7 @@ module metronome (
     end
   end
 
+  // Moore machine to start/stop the entire metronome
   typedef enum logic [0:0] {
     RUN,
     STOP
