@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.runs/synth_1/metronome.tcl"
+  variable script "C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.runs/synth_1/metronome.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,6 +56,7 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 5
 set_param general.usePosixSpawnForFork 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35ticpg236-1L
@@ -63,20 +64,22 @@ create_project -in_memory -part xc7a35ticpg236-1L
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.cache/wt [current_project]
-set_property parent.project_path C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.cache/wt [current_project]
+set_property parent.project_path C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.cache/ip [current_project]
+set_property ip_output_repo c:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib -sv {
-  C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/bpm_input.sv
-  C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/button_logic.sv
-  C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/ms_tick.sv
-  C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/tempo_generator.sv
-  C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv
+  C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/bpm_input.sv
+  C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/button_logic.sv
+  C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/downbeats.sv
+  C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/ms_tick.sv
+  C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv
+  C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/tempo_generator.sv
+  C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -87,10 +90,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/Isaac/vivado_projects/cpe133-metronome/basys3_constraints.xdc
-set_property used_in_implementation false [get_files C:/Users/Isaac/vivado_projects/cpe133-metronome/basys3_constraints.xdc]
+read_xdc C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/basys3_constraints.xdc
+set_property used_in_implementation false [get_files C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/basys3_constraints.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/utils_1/imports/synth_1/metronome.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

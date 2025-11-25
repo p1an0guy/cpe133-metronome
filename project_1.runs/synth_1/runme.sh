@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.runs/synth_1'
+HD_PWD='C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35ticpg236-1L" LaunchTime="1764112845">
-  <File Type="ROUTE-PWR" Name="metronome_power_routed.rpt"/>
+<GenRun Id="impl_1" LaunchPart="xc7a35ticpg236-1L" LaunchTime="1764114358">
   <File Type="PA-TCL" Name="metronome.tcl"/>
-  <File Type="ROUTE-PWR-SUM" Name="metronome_power_summary_routed.pb"/>
-  <File Type="OPT-RQA-PB" Name="metronome_rqa_opted.pb"/>
   <File Type="REPORTS-TCL" Name="metronome_reports.tcl"/>
   <File Type="INIT-TIMING" Name="metronome_timing_summary_init.rpt"/>
   <File Type="OPT-DCP" Name="metronome_opt.dcp"/>
   <File Type="OPT-DRC" Name="metronome_drc_opted.rpt"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="metronome_routed_bb.dcp"/>
   <File Type="OPT-UTIL" Name="metronome_utilization_opted.rpt"/>
-  <File Type="ROUTE-TIMING-PB" Name="metronome_timing_summary_routed.pb"/>
   <File Type="OPT-UTIL-PB" Name="metronome_utilization_opted.pb"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="metronome_methodology_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="metronome.hwdef"/>
   <File Type="OPT-TIMING" Name="metronome_timing_summary_opted.rpt"/>
+  <File Type="OPT-RQA-PB" Name="metronome_rqa_opted.pb"/>
   <File Type="PWROPT-DCP" Name="metronome_pwropt.dcp"/>
   <File Type="PWROPT-DRC" Name="metronome_drc_pwropted.rpt"/>
   <File Type="PWROPT-TIMING" Name="metronome_timing_summary_pwropted.rpt"/>
@@ -26,19 +22,17 @@
   <File Type="PLACE-CTRL" Name="metronome_control_sets_placed.rpt"/>
   <File Type="PLACE-SIMILARITY" Name="metronome_incremental_reuse_placed.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="metronome_incremental_reuse_pre_placed.rpt"/>
-  <File Type="BG-BIN" Name="metronome.bin"/>
   <File Type="PLACE-TIMING" Name="metronome_timing_summary_placed.rpt"/>
-  <File Type="ROUTE-PWR-RPX" Name="metronome_power_routed.rpx"/>
   <File Type="PLACE-RQA-PB" Name="metronome_rqa_placed.pb"/>
   <File Type="POSTPLACE-PWROPT-DCP" Name="metronome_postplace_pwropt.dcp"/>
   <File Type="POSTPLACE-PWROPT-TIMING" Name="metronome_timing_summary_postplace_pwropted.rpt"/>
   <File Type="PHYSOPT-DCP" Name="metronome_physopt.dcp"/>
   <File Type="PHYSOPT-DRC" Name="metronome_drc_physopted.rpt"/>
   <File Type="PHYSOPT-TIMING" Name="metronome_timing_summary_physopted.rpt"/>
-  <File Type="ROUTE-UTIL" Name="metronome_utilization_routed.rpt"/>
   <File Type="ROUTE-ERROR-DCP" Name="metronome_routed_error.dcp"/>
   <File Type="ROUTE-DCP" Name="metronome_routed.dcp"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="metronome_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="metronome_routed_bb.dcp"/>
+  <File Type="ROUTE-UTIL" Name="metronome_utilization_routed.rpt"/>
   <File Type="ROUTE-UTIL-PB" Name="metronome_utilization_routed.pb"/>
   <File Type="ROUTE-DRC" Name="metronome_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="metronome_drc_routed.pb"/>
@@ -46,24 +40,30 @@
   <File Type="ROUTE-METHODOLOGY-DRC" Name="metronome_methodology_drc_routed.rpt"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="metronome_methodology_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="metronome_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-RQS-PB" Name="metronome_rqs_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="metronome_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="metronome_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="metronome_power_routed.rpx"/>
   <File Type="ROUTE-STATUS" Name="metronome_route_status.rpt"/>
   <File Type="ROUTE-STATUS-PB" Name="metronome_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="metronome_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="metronome_timing_summary_routed.pb"/>
   <File Type="ROUTE-TIMING-RPX" Name="metronome_timing_summary_routed.rpx"/>
   <File Type="ROUTE-SIMILARITY" Name="metronome_incremental_reuse_routed.rpt"/>
   <File Type="ROUTE-CLK" Name="metronome_clock_utilization_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW" Name="metronome_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="metronome_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="metronome_bus_skew_routed.rpx"/>
+  <File Type="ROUTE-RQS-PB" Name="metronome_rqs_routed.pb"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="metronome_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="metronome_postroute_physopt_bb.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING" Name="metronome_timing_summary_postroute_physopted.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="metronome_timing_summary_postroute_physopted.pb"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="metronome_timing_summary_postroute_physopted.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="metronome_bus_skew_postroute_physopted.rpt"/>
-  <File Type="BG-BIT" Name="metronome.bit"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="metronome_bus_skew_postroute_physopted.pb"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="metronome_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BG-BIT" Name="metronome.bit"/>
+  <File Type="BG-BIN" Name="metronome.bin"/>
   <File Type="BITSTR-MSK" Name="metronome.msk"/>
   <File Type="BITSTR-RBT" Name="metronome.rbt"/>
   <File Type="BITSTR-NKY" Name="metronome.nky"/>
@@ -127,7 +127,21 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/downbeats.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/ms_tick.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/seven_seg_display.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -143,22 +157,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/metronome.sv">
       <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/seven_seg_display.sv">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/beats_per_measure_input.sv">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -184,6 +182,14 @@
   </FileSet>
   <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
     <Filter Type="Utils"/>
+    <File Path="$PSRCDIR/utils_1/imports/synth_1/metronome.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>

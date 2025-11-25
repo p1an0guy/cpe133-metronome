@@ -3,94 +3,134 @@
 # SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
 # IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
 # SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
-# Start of session at: Tue Nov 25 15:20:04 2025
-# Process ID         : 20844
-# Current directory  : C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.runs/synth_1
+# Start of session at: Tue Nov 25 15:45:18 2025
+# Process ID         : 3556
+# Current directory  : C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.runs/synth_1
 # Command line       : vivado.exe -log metronome.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source metronome.tcl
-# Log file           : C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.runs/synth_1/metronome.vds
-# Journal file       : C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.runs/synth_1\vivado.jou
-# Running On         : DESKTOP-S7FGGER
+# Log file           : C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.runs/synth_1/metronome.vds
+# Journal file       : C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.runs/synth_1\vivado.jou
+# Running On         : DESKTOP-403USDT
 # Platform           : Windows Server 2016 or Windows 10
-# Operating System   : 26100
-# Processor Detail   : 12th Gen Intel(R) Core(TM) i7-1255U
-# CPU Frequency      : 2611 MHz
-# CPU Physical cores : 10
-# CPU Logical cores  : 12
-# Host memory        : 16849 MB
-# Swap memory        : 25950 MB
-# Total Virtual      : 42799 MB
-# Available Virtual  : 26678 MB
+# Operating System   : 26200
+# Processor Detail   : Intel(R) Core(TM) Ultra 7 155H
+# CPU Frequency      : 2995 MHz
+# CPU Physical cores : 16
+# CPU Logical cores  : 22
+# Host memory        : 16597 MB
+# Swap memory        : 25769 MB
+# Total Virtual      : 42367 MB
+# Available Virtual  : 18415 MB
 #-----------------------------------------------------------
 source metronome.tcl -notrace
-create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:05 . Memory (MB): peak = 491.328 ; gain = 210.707
+Command: read_checkpoint -auto_incremental -incremental C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/utils_1/imports/synth_1/metronome.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/utils_1/imports/synth_1/metronome.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top metronome -part xc7a35ticpg236-1L
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35ti'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35ti'
 INFO: [Device 21-403] Loading part xc7a35ticpg236-1L
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 20248
+INFO: [Synth 8-7075] Helper process launched with PID 25756
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1173.262 ; gain = 491.586
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1179.387 ; gain = 494.434
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'metronome' [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'button_logic' [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/button_logic.sv:23]
-INFO: [Synth 8-6155] done synthesizing module 'button_logic' (0#1) [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/button_logic.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'bpm_input' [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/bpm_input.sv:23]
-INFO: [Synth 8-6155] done synthesizing module 'bpm_input' (0#1) [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/bpm_input.sv:23]
-WARNING: [Synth 8-689] width (9) of port connection 'bpm_out' does not match port width (8) of module 'bpm_input' [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv:46]
-INFO: [Synth 8-6157] synthesizing module 'tempo_generator' [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/tempo_generator.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'ms_tick' [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/ms_tick.sv:19]
-INFO: [Synth 8-6155] done synthesizing module 'ms_tick' (0#1) [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/ms_tick.sv:19]
-INFO: [Synth 8-6155] done synthesizing module 'tempo_generator' (0#1) [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/tempo_generator.sv:23]
-WARNING: [Synth 8-689] width (9) of port connection 'bpm' does not match port width (8) of module 'tempo_generator' [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv:54]
-INFO: [Synth 8-6155] done synthesizing module 'metronome' (0#1) [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv:23]
-WARNING: [Synth 8-7137] Register button_sync_reg in module button_logic has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.srcs/sources_1/new/button_logic.sv:45]
-WARNING: [Synth 8-3917] design metronome has port bpm_out[8] driven by constant 0
+INFO: [Synth 8-11241] undeclared symbol 'beats_per_measure_minute_switcher', assumed default net type 'wire' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv:91]
+INFO: [Synth 8-6157] synthesizing module 'metronome' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'button_logic' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/button_logic.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'button_logic' (0#1) [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/button_logic.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'bpm_input' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/bpm_input.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'bpm_input' (0#1) [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/bpm_input.sv:23]
+WARNING: [Synth 8-689] width (9) of port connection 'bpm_out' does not match port width (8) of module 'bpm_input' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv:63]
+INFO: [Synth 8-6157] synthesizing module 'tempo_generator' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/tempo_generator.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'ms_tick' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/ms_tick.sv:19]
+INFO: [Synth 8-6155] done synthesizing module 'ms_tick' (0#1) [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/ms_tick.sv:19]
+INFO: [Synth 8-6155] done synthesizing module 'tempo_generator' (0#1) [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/tempo_generator.sv:23]
+WARNING: [Synth 8-689] width (9) of port connection 'bpm' does not match port width (8) of module 'tempo_generator' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv:72]
+INFO: [Synth 8-6157] synthesizing module 'downbeats' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/downbeats.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'downbeats' (0#1) [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/downbeats.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'seven_seg_display' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:29]
+INFO: [Synth 8-6157] synthesizing module 'seg7_frontend_min' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:56]
+INFO: [Synth 8-6157] synthesizing module 'display_format_bpm_or_ts' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:149]
+INFO: [Synth 8-6157] synthesizing module 'bcd_u8' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:110]
+INFO: [Synth 8-6155] done synthesizing module 'bcd_u8' (0#1) [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:110]
+WARNING: [Synth 8-7071] port 'hund' of module 'bcd_u8' is unconnected for instance 'u_ts' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:165]
+WARNING: [Synth 8-7071] port 'tens' of module 'bcd_u8' is unconnected for instance 'u_ts' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:165]
+WARNING: [Synth 8-7023] instance 'u_ts' of module 'bcd_u8' has 4 connections declared, but only 2 given [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:165]
+INFO: [Synth 8-6155] done synthesizing module 'display_format_bpm_or_ts' (0#1) [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:149]
+INFO: [Synth 8-6157] synthesizing module 'seg7_control_case' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:191]
+INFO: [Synth 8-226] default block is never used [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:229]
+INFO: [Synth 8-226] default block is never used [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:243]
+INFO: [Synth 8-294] found qualifier unique on case statement: implementing as parallel_case [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:252]
+INFO: [Synth 8-6155] done synthesizing module 'seg7_control_case' (0#1) [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:191]
+INFO: [Synth 8-6157] synthesizing module 'led_flash_on_pulse' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:273]
+	Parameter FLASH_MS bound to: 32'sb00000000000000000000000001111000 
+	Parameter CLK_HZ bound to: 32'sb00000101111101011110000100000000 
+	Parameter LEDS bound to: 32'sb00000000000000000000000000010000 
+	Parameter MASK bound to: 65535 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'led_flash_on_pulse' (0#1) [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:273]
+INFO: [Synth 8-6155] done synthesizing module 'seg7_frontend_min' (0#1) [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:56]
+INFO: [Synth 8-6155] done synthesizing module 'seven_seg_display' (0#1) [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/seven_seg_display.sv:29]
+WARNING: [Synth 8-689] width (9) of port connection 'bpm' does not match port width (8) of module 'seven_seg_display' [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv:89]
+INFO: [Synth 8-6155] done synthesizing module 'metronome' (0#1) [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv:23]
+WARNING: [Synth 8-7137] Register button_sync_reg in module button_logic has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/button_logic.sv:45]
+WARNING: [Synth 8-7137] Register downbeat_reg in module downbeats has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/downbeats.sv:38]
+WARNING: [Synth 8-3848] Net beats_per_measure_minute_switcher in module/entity metronome does not have driver. [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv:91]
+WARNING: [Synth 8-3848] Net state in module/entity metronome does not have driver. [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.srcs/sources_1/new/metronome.sv:105]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1280.859 ; gain = 599.184
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1287.102 ; gain = 602.148
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1280.859 ; gain = 599.184
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1287.102 ; gain = 602.148
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1280.859 ; gain = 599.184
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1287.102 ; gain = 602.148
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1280.859 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1287.102 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [C:/Users/Isaac/vivado_projects/cpe133-metronome/basys3_constraints.xdc]
-Finished Parsing XDC File [C:/Users/Isaac/vivado_projects/cpe133-metronome/basys3_constraints.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Isaac/vivado_projects/cpe133-metronome/basys3_constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/metronome_propImpl.xdc].
+Parsing XDC File [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/basys3_constraints.xdc]
+WARNING: [Vivado 12-584] No ports matched 'beats_per_measure_minute_switcher'. [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/basys3_constraints.xdc:42]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/basys3_constraints.xdc:42]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'beats_per_measure_minute_switcher'. [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/basys3_constraints.xdc:43]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/basys3_constraints.xdc:43]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/basys3_constraints.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/basys3_constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/metronome_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/metronome_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1356.367 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1368.938 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1356.367 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1368.938 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1356.367 ; gain = 674.691
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1368.938 ; gain = 683.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35ticpg236-1L
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1356.367 ; gain = 674.691
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1368.938 ; gain = 683.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1356.367 ; gain = 674.691
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1368.938 ; gain = 683.984
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'button_logic'
 ---------------------------------------------------------------------------------------------------
@@ -103,27 +143,35 @@ INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'butto
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'button_logic'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1356.367 ; gain = 674.691
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1368.938 ; gain = 683.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   32 Bit       Adders := 2     
+	   2 Input   32 Bit       Adders := 3     
 	   2 Input   20 Bit       Adders := 2     
-	   2 Input   17 Bit       Adders := 1     
-	   2 Input    8 Bit       Adders := 1     
+	   2 Input   17 Bit       Adders := 2     
+	   2 Input    8 Bit       Adders := 3     
+	   2 Input    4 Bit       Adders := 1     
+	   2 Input    2 Bit       Adders := 1     
 +---Registers : 
 	               32 Bit    Registers := 3     
-	               17 Bit    Registers := 1     
+	               17 Bit    Registers := 2     
 	                8 Bit    Registers := 1     
-	                1 Bit    Registers := 8     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 9     
 +---Muxes : 
 	   3 Input   32 Bit        Muxes := 2     
 	   2 Input   20 Bit        Muxes := 2     
+	   2 Input    9 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 4     
+	   4 Input    4 Bit        Muxes := 2     
 	   3 Input    2 Bit        Muxes := 2     
-	   2 Input    2 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 4     
 	   3 Input    1 Bit        Muxes := 6     
 	   2 Input    1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
@@ -142,31 +190,30 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-3917] design metronome has port bpm_out[8] driven by constant 0
 WARNING: [Synth 8-3332] Sequential element (bpm_button_up_debounced/FSM_sequential_state_reg[1]) is unused and will be removed from module metronome.
 WARNING: [Synth 8-3332] Sequential element (bpm_button_up_debounced/FSM_sequential_state_reg[0]) is unused and will be removed from module metronome.
 WARNING: [Synth 8-3332] Sequential element (bpm_button_down_debounced/FSM_sequential_state_reg[1]) is unused and will be removed from module metronome.
 WARNING: [Synth 8-3332] Sequential element (bpm_button_down_debounced/FSM_sequential_state_reg[0]) is unused and will be removed from module metronome.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1356.367 ; gain = 674.691
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1368.938 ; gain = 683.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1483.211 ; gain = 801.535
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1495.555 ; gain = 810.602
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1483.211 ; gain = 801.535
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1521.152 ; gain = 836.199
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1492.789 ; gain = 811.113
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1525.414 ; gain = 840.461
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -184,37 +231,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1727.832 ; gain = 1046.156
+Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1744.766 ; gain = 1059.812
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1727.832 ; gain = 1046.156
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1744.766 ; gain = 1059.812
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1727.832 ; gain = 1046.156
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1744.766 ; gain = 1059.812
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1727.832 ; gain = 1046.156
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1744.766 ; gain = 1059.812
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1727.832 ; gain = 1046.156
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1744.766 ; gain = 1059.812
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1727.832 ; gain = 1046.156
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1744.766 ; gain = 1059.812
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -231,38 +278,43 @@ Report Cell Usage:
 |      |Cell   |Count |
 +------+-------+------+
 |1     |BUFG   |     1|
-|2     |CARRY4 |     2|
-|3     |LUT1   |     2|
-|4     |LUT2   |     6|
-|5     |LUT5   |     2|
-|6     |LUT6   |     1|
-|7     |FDCE   |     4|
-|8     |FDPE   |     4|
-|9     |IBUF   |     4|
-|10    |OBUF   |     9|
+|2     |CARRY4 |    34|
+|3     |LUT1   |    51|
+|4     |LUT2   |    38|
+|5     |LUT3   |     6|
+|6     |LUT4   |    18|
+|7     |LUT5   |    12|
+|8     |LUT6   |    28|
+|9     |FDCE   |    26|
+|10    |FDPE   |     4|
+|11    |FDRE   |    67|
+|12    |FDSE   |    10|
+|13    |IBUF   |     4|
+|14    |OBUF   |    27|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1727.832 ; gain = 1046.156
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1744.766 ; gain = 1059.812
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 6 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 1727.832 ; gain = 970.648
-Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1727.832 ; gain = 1046.156
+Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:18 . Memory (MB): peak = 1744.766 ; gain = 977.977
+Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1744.766 ; gain = 1059.812
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1737.051 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1752.844 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 34 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1740.691 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1756.555 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: fef3afb0
+Synth Design complete | Checksum: d8a2f5e3
 INFO: [Common 17-83] Releasing license: Synthesis
-27 Infos, 10 Warnings, 0 Critical Warnings and 0 Errors encountered.
+51 Infos, 17 Warnings, 2 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1740.691 ; gain = 1249.363
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1740.691 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/Isaac/vivado_projects/cpe133-metronome/project_1.runs/synth_1/metronome.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1756.555 ; gain = 1257.883
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1756.555 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.runs/synth_1/metronome.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file metronome_utilization_synth.rpt -pb metronome_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Nov 25 15:20:36 2025...
+INFO: [Common 17-206] Exiting Vivado at Tue Nov 25 15:45:47 2025...
