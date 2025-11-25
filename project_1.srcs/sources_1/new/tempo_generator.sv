@@ -26,6 +26,9 @@ module tempo_generator (
     input logic [7:0] bpm,  // supports up to ~500 bpm
     output logic beat_tick  // "tick" after conversion from 1 ms
 );
+
+
+
   logic [31:0] millesecond_accumulator;
   logic millesecond_tick;
   ms_tick tick (
@@ -34,7 +37,7 @@ module tempo_generator (
       .ms_tick(millesecond_tick)
   );
 
-  always_ff @(posedge clock) begin
+  always_ff @(posedge clk) begin
     if (reset) begin
       millesecond_accumulator <= 0;
       beat_tick <= 0;
