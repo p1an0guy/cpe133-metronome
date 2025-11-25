@@ -23,7 +23,7 @@
 module tempo_generator (
     input logic clk,
     input logic reset,
-    input logic [8:0] bpm,  // supports up to ~500 bpm
+    input logic [7:0] bpm,  // supports up to ~500 bpm
     output logic beat_tick  // "tick" after conversion from 1 ms
 );
   logic [31:0] millesecond_accumulator;

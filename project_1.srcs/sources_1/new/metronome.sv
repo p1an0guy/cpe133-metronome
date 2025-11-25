@@ -23,7 +23,7 @@
 module metronome (
     input logic clk,
     input logic reset,
-    output logic [8:0] bpm_out  // TO BE USED FOR FRONTEND
+    output logic [7:0] bpm_out  // TO BE USED FOR FRONTEND
     // TODO: drive an output for time signature once we have that implemented 
 );
 
