@@ -1,0 +1,5 @@
+set_property SRC_FILE_INFO {cfile:C:/Users/Isaac/vivado_projects/cpe133-metronome/basys3_constraints.xdc rfile:../../../basys3_constraints.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:115 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN W19 [get_ports bpm_button_down]
+set_property src_info {type:XDC file:1 line:117 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN T17 [get_ports bpm_button_up]

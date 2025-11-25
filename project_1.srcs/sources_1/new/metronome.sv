@@ -37,7 +37,10 @@ module metronome (
     // TODO: drive an output for time signature once we have that implemented 
 );
   // initialize to 120 bpm
-  logic [8:0] bpm = 9'd120;
+  logic [8:0] bpm;
+  initial begin
+  bpm <= 9'd120;
+  end
   // drive the output for bpm_out to be used by frontend processes
   assign bpm_out = bpm;
 
@@ -55,8 +58,6 @@ bpm_input adjust_bpm(.clk(clk), .reset(reset), .button_up(bpm_button_up), .butto
   tempo_generator gen (
       .clk(clk),
       .reset(reset),
-      .button_up(bpm_up_button),
-      .button_down(bpm_down_button),
       .bpm(bpm),
       .beat_tick(beat_tick)
   );
