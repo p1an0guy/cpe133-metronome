@@ -30,9 +30,12 @@ module metronome (
     output logic [3:0] an,  // seven-seg anodes (active low)
     output logic [6:0] seg,  // seven-seg segments
     input logic bpm_button_up,
-    input logic bpm_button_down
+    input logic bpm_button_down,
+    input logic beats_per_measure_button_up,
+    input logic beats_per_measure_button_down,
+    input logic metronome_activate_button
 );
-  // initialize to 120 bpm
+  // initialize to 120 bpm and 4 beats per measure
   logic [7:0] bpm;
   logic [3:0] beats_per_measure;
   initial begin
@@ -55,6 +58,22 @@ module metronome (
       .button_in(bpm_button_down),
       .button_out(bpm_button_down_pressed)
   );
+  
+  //Interface with top & bottom buttons to adjust beats per measure
+  logic beats_per_measure_button_up_pressed;
+  logic beats_per_measure_button_down_pressed;
+  button_logic beats_per_measure_button_up_debounced (
+      .clk(clk),
+      .reset(reset),
+      .button_in(beats_per_measure_button_up),
+      .button_out(beats_per_measure_button_up_pressed)
+  );
+  button_logic beats_per_measure_button_down_debounced (
+      .clk(clk),
+      .reset(reset),
+      .button_in(beats_per_measure_button_down),
+      .button_out(beats_per_measure_button_down_pressed)
+  );
 
   bpm_input adjust_bpm (
       .clk(clk),
@@ -62,6 +81,14 @@ module metronome (
       .button_up(bpm_button_up),
       .button_down(bpm_button_down),
       .bpm_out(bpm)
+  );
+  
+  beats_per_measure_input adjust_beats_per_measure(
+      .clk(clk),
+      .reset(reset),
+      .button_up(beats_per_measure_button_up),
+      .button_down(beats_per_measure_button_down),
+      .beats_per_measure_out(beats_per_measure)
   );
 
   // get a beat tick from tempo_generator module
@@ -105,12 +132,20 @@ module metronome (
   } state_type;
   state_type state;
 
+logic activate_button_pressed;
+button_logic activate_button_debounced (
+      .clk(clk),
+      .reset(reset),
+      .button_in(metronome_activate_button),
+      .button_out(activate_button_pressed)
+  );
+
   always_ff @(posedge clk or posedge reset) begin
     if (reset) begin
       state <= STOP;
-    end else if (state == STOP && button_pressed) begin
+    end else if (state == STOP && activate_button_pressed) begin
       state <= RUN;
-    end else if (state == RUN && button_pressed) begin
+    end else if (state == RUN && activate_button_pressed) begin
       state <= STOP;
     end
   end

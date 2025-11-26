@@ -108,16 +108,16 @@ set_property PACKAGE_PIN W4 [get_ports {an[3]}]
 
 
 ##Buttons
-#set_property PACKAGE_PIN U18 [get_ports btnC]						
-	#set_property IOSTANDARD LVCMOS33 [get_ports btnC]
-#set_property PACKAGE_PIN T18 [get_ports btnU]						
-	#set_property IOSTANDARD LVCMOS33 [get_ports btnU]
+set_property PACKAGE_PIN U18 [get_ports metronome_activate_button]						
+	set_property IOSTANDARD LVCMOS33 [get_ports metronome_activate_button]
+set_property PACKAGE_PIN T18 [get_ports beats_per_measure_button_up]						
+	set_property IOSTANDARD LVCMOS33 [get_ports beats_per_measure_button_up]
 set_property PACKAGE_PIN W19 [get_ports bpm_button_down]						
 	set_property IOSTANDARD LVCMOS33 [get_ports bpm_button_down]
 set_property PACKAGE_PIN T17 [get_ports bpm_button_up]						
 	set_property IOSTANDARD LVCMOS33 [get_ports bpm_button_up]
-#set_property PACKAGE_PIN U17 [get_ports btnD]						
-	#set_property IOSTANDARD LVCMOS33 [get_ports btnD]
+set_property PACKAGE_PIN U17 [get_ports beats_per_measure_button_down]						
+	set_property IOSTANDARD LVCMOS33 [get_ports beats_per_measure_button_down]
  
 
 
