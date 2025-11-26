@@ -58,7 +58,7 @@ module metronome (
       .button_in(bpm_button_down),
       .button_out(bpm_button_down_pressed)
   );
-  
+
   //Interface with top & bottom buttons to adjust beats per measure
   logic beats_per_measure_button_up_pressed;
   logic beats_per_measure_button_down_pressed;
@@ -78,16 +78,16 @@ module metronome (
   bpm_input adjust_bpm (
       .clk(clk),
       .reset(reset),
-      .button_up(bpm_button_up),
-      .button_down(bpm_button_down),
+      .button_up(bpm_button_up_pressed),
+      .button_down(bpm_button_down_pressed),
       .bpm_out(bpm)
   );
-  
-  beats_per_measure_input adjust_beats_per_measure(
+
+  beats_per_measure_input adjust_beats_per_measure (
       .clk(clk),
       .reset(reset),
-      .button_up(beats_per_measure_button_up),
-      .button_down(beats_per_measure_button_down),
+      .button_up(beats_per_measure_button_up_pressed),
+      .button_down(beats_per_measure_button_down_pressed),
       .beats_per_measure_out(beats_per_measure)
   );
 
@@ -132,8 +132,8 @@ module metronome (
   } state_type;
   state_type state;
 
-logic activate_button_pressed;
-button_logic activate_button_debounced (
+  logic activate_button_pressed;
+  button_logic activate_button_debounced (
       .clk(clk),
       .reset(reset),
       .button_in(metronome_activate_button),

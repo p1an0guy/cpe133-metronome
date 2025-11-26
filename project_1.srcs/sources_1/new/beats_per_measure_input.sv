@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module bpm_input (
+module beats_per_measure_input (
     input logic clk,
     input logic reset,
     input logic button_up,
@@ -32,8 +32,10 @@ module bpm_input (
     if (reset) begin
       beats_per_measure_out <= 4'd4;
     end else begin
-      if (button_up && beats_per_measure_out < 4'd15) beats_per_measure_out <= beats_per_measure_out + 1;
-      if (button_down && beats_per_measure_out > 4'd1) beats_per_measure_out <= beats_per_measure_out - 1;
+      if (button_up && beats_per_measure_out < 4'd15)
+        beats_per_measure_out <= beats_per_measure_out + 1;
+      if (button_down && beats_per_measure_out > 4'd1)
+        beats_per_measure_out <= beats_per_measure_out - 1;
     end
   end
 endmodule
