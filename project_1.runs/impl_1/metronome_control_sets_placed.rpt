@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Tue Nov 25 20:09:18 2025
+| Date         : Tue Nov 25 20:53:38 2025
 | Host         : DESKTOP-403USDT running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file metronome_control_sets_placed.rpt
 | Design       : metronome
@@ -59,10 +59,10 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               4 |            3 |
-| No           | No                    | Yes                    |             128 |           47 |
+| No           | No                    | Yes                    |             200 |           76 |
 | No           | Yes                   | No                     |              16 |            4 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |              16 |            5 |
+| Yes          | No                    | Yes                    |              16 |            6 |
 | Yes          | Yes                   | No                     |              56 |           14 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -74,13 +74,13 @@ Table of Contents
 |  Clock Signal  |                       Enable Signal                       |                 Set/Reset Signal                | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------+-----------------------------------------------------------+-------------------------------------------------+------------------+----------------+--------------+
 |  clk_IBUF_BUFG |                                                           |                                                 |                3 |              4 |         1.33 |
-|  clk_IBUF_BUFG | adjust_beats_per_measure/beats_per_measure_out[3]_i_1_n_0 | reset_IBUF                                      |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | adjust_beats_per_measure/beats_per_measure_out[3]_i_1_n_0 | reset_IBUF                                      |                2 |              4 |         2.00 |
 |  clk_IBUF_BUFG | gen/E[0]                                                  | reset_IBUF                                      |                1 |              4 |         4.00 |
 |  clk_IBUF_BUFG | adjust_bpm/bpm_out[7]_i_1_n_0                             | reset_IBUF                                      |                3 |              8 |         2.67 |
 |  clk_IBUF_BUFG |                                                           | frontend/u_front/u_disp/digit_timer[16]_i_1_n_0 |                4 |             16 |         4.00 |
 |  clk_IBUF_BUFG | frontend/u_front/u_ledflash/tmr_reg[2]_0                  | downbeats/downbeat                              |                6 |             24 |         4.00 |
 |  clk_IBUF_BUFG | gen/tick/ms_tick                                          | reset_IBUF                                      |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG |                                                           | reset_IBUF                                      |               47 |            128 |         2.72 |
+|  clk_IBUF_BUFG |                                                           | reset_IBUF                                      |               76 |            200 |         2.63 |
 +----------------+-----------------------------------------------------------+-------------------------------------------------+------------------+----------------+--------------+
 
 

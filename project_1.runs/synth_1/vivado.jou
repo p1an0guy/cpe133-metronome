@@ -3,8 +3,8 @@
 # SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
 # IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
 # SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
-# Start of session at: Tue Nov 25 20:08:18 2025
-# Process ID         : 10924
+# Start of session at: Tue Nov 25 20:44:22 2025
+# Process ID         : 26132
 # Current directory  : C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.runs/synth_1
 # Command line       : vivado.exe -log metronome.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source metronome.tcl
 # Log file           : C:/Users/123jo/School/F2025/CPE133/cpe133-metronome/project_1.runs/synth_1/metronome.vds
@@ -19,6 +19,6 @@
 # Host memory        : 16597 MB
 # Swap memory        : 25769 MB
 # Total Virtual      : 42367 MB
-# Available Virtual  : 17690 MB
+# Available Virtual  : 17392 MB
 #-----------------------------------------------------------
 source metronome.tcl -notrace

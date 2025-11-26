@@ -151,5 +151,4 @@ module metronome (
   end
 
   assign beat_tick_active = (state == RUN) ? beat_tick : 1'b0;
-
 endmodule
