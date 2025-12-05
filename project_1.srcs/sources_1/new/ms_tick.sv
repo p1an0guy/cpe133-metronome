@@ -16,12 +16,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ms_tick (
+module ms_tick #(
+    parameter int unsigned CYCLES_PER_MS = 100_000
+) (
     input  logic clk,
     input  logic reset,
     output logic ms_tick
 );
-  logic [16:0] ms_div;  // used as mod-99,999 counter
+  localparam int unsigned COUNTER_WIDTH =
+      (CYCLES_PER_MS <= 1) ? 1 : $clog2(CYCLES_PER_MS);
+
+  logic [COUNTER_WIDTH-1:0] ms_div;  // used as mod-(CYCLES_PER_MS-1) counter
 
   always_ff @(posedge clk or posedge reset) begin
 
@@ -31,7 +36,7 @@ module ms_tick (
     end else begin
       ms_tick <= 0;  // set the "tick" to low
       // set the "tick" to high once every millisecond
-      if (ms_div == 99_999) begin
+      if (ms_div == CYCLES_PER_MS - 1) begin
         ms_div  <= 0;
         ms_tick <= 1;
       end else begin

@@ -1,22 +1,22 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+// Company:
+// Engineer:
+//
 // Create Date: 11/24/2025 12:38:21 PM
-// Design Name: 
+// Design Name:
 // Module Name: seven_seg_display
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
+// Project Name:
+// Target Devices:
+// Tool Versions:
+// Description:
+//
+// Dependencies:
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 // What I need
@@ -24,18 +24,20 @@
 //   - ts[3:0]      : beats per measure (time signature)
 //   - show_ts      : 0 = show BPM; 1 = show TS
 //   - downbeat     : 1-clock pulse at the first beat of each measure
+//   - beat_tick    : pulse to light LED 8
 
 
 module seven_seg_display (
     input  logic        clk,
     input  logic [ 7:0] bpm,
-    input  logic [ 3:0] ts,        // (time signature, beats per measure)
-    input  logic        show_ts,   // 0=BPM, 1=TS
-    input  logic        downbeat,  // 1-cycle pulse on measure start
-    output logic [15:0] led,       // board LEDs (active-high)
-    output logic [ 3:0] an,        // 7-seg anodes (active-low)
-    output logic [ 6:0] seg,       // 7-seg segments a..g (active-low)
-    output logic        dp         // 7-seg dp (active-low) (off)
+    input  logic [ 3:0] ts,         // (time signature, beats per measure)
+    input  logic        show_ts,    // 0=BPM, 1=TS
+    input  logic        downbeat,   // 1-cycle pulse on measure start
+    input  logic        beat_tick,  // NEW
+    output logic [15:0] led,        // board LEDs (active-high)
+    output logic [ 3:0] an,         // 7-seg anodes (active-low)
+    output logic [ 6:0] seg,        // 7-seg segments a..g (active-low)
+    output logic        dp          // 7-seg dp (active-low) (off)
 );
 
   seg7_frontend_min u_front (
@@ -44,6 +46,7 @@ module seven_seg_display (
       .ts(ts),
       .show_ts(show_ts),
       .downbeat(downbeat),
+      .beat(beat_tick),
       .led(led),
       .an(an),
       .seg(seg),
@@ -54,11 +57,12 @@ endmodule
 
 
 module seg7_frontend_min (
-    input logic       clk,      // 100 MHz
+    input logic       clk,       // 100 MHz
     input logic [7:0] bpm,
-    input logic [3:0] ts,       // (time signature)
-    input logic       show_ts,  // 0=BPM, 1=TS
-    input logic       downbeat, // 1-cycle pulse on measure start
+    input logic [3:0] ts,        // (time signature)
+    input logic       show_ts,   // 0=BPM, 1=TS
+    input logic       downbeat,  // 1-cycle pulse on measure start
+    input logic       beat,
 
     output logic [15:0] led,  // LEDs flash on downbeat
     output logic [ 3:0] an,   // seven-seg anodes (active-low)
@@ -91,17 +95,37 @@ module seg7_frontend_min (
       .dp        (dp)
   );
 
-  // LED FLASH: stretch downbeat so LEDs visibly blink
+  // LED patterns
+  logic [15:0] led_downbeat;
+  logic [15:0] led_beat;
+
+  // Downbeat
   led_flash_on_pulse #(
       .FLASH_MS(120),
       .CLK_HZ(100_000_000),
       .LEDS(16),
       .MASK(16'hFFFF)
-  ) u_ledflash (
+  ) u_ledflash_downbeat (
       .clk     (clk),
       .pulse_in(downbeat),
-      .led_out (led)
+      .led_out (led_downbeat)
   );
+
+  // Regular beat
+  led_flash_on_pulse #(
+      .FLASH_MS(120),
+      .CLK_HZ(100_000_000),
+      .LEDS(16),
+      .MASK(16'h0100)
+  ) u_ledflash_beat (
+      .clk(clk),
+      .pulse_in(beat),
+      .led_out(led_beat)
+  );
+
+  always_comb begin
+    led = led_downbeat | led_beat;
+  end
 
 endmodule
 
@@ -191,7 +215,7 @@ endmodule
 
 //  Uses a 17-bit timer to get ~1ms per digit at 100 MHz.
 //  Cycles digit_select = 0..3 -> selects ones/tens/hundreds/thousands.
-//  For each digit, turns on the correct anode 
+//  For each digit, turns on the correct anode
 module seg7_control_case (
     input  logic       clk_100MHz,
     input  logic       reset,
@@ -231,15 +255,15 @@ module seg7_control_case (
     // default all off
     digit = 4'b1111;
     case (digit_select)
-      2'b00:   digit = 4'b1110;  // ones 
+      2'b00:   digit = 4'b1110;  // ones
       2'b01:   digit = 4'b1101;  // tens
       2'b10:   digit = 4'b1011;  // hundreds
-      2'b11:   digit = 4'b0111;  // thousands 
+      2'b11:   digit = 4'b0111;  // thousands
       default: digit = 4'b1111;
     endcase
   end
 
-  // Pick which nibble to show and map 0-9 
+  // Pick which nibble to show and map 0-9
   logic [3:0] cur_digit;
 
   always_comb begin
@@ -286,6 +310,8 @@ module led_flash_on_pulse #(
 );
   localparam int CYCLES = FLASH_MS * (CLK_HZ / 1000);
   logic [$clog2(CYCLES+1)-1:0] tmr;
+
+  initial tmr = '0;
 
   always_ff @(posedge clk) begin
     if (pulse_in) tmr <= CYCLES[$clog2(CYCLES+1)-1:0];

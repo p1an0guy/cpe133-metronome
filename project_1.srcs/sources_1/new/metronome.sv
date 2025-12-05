@@ -118,6 +118,7 @@ module metronome (
       .ts(beats_per_measure),
       .show_ts(beats_per_measure_minute_switcher),
       .downbeat(downbeat),
+      .beat_tick(beat_tick_active),
       .led(led),
       .an(an),
       .seg(seg),

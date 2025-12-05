@@ -34,7 +34,7 @@ module downbeats (
     if (reset) begin
       beat_idx <= 0;
     end else if (beat_tick) begin
-      if (beat_idx == beats_per_measure - 1) begin
+      if (beat_idx >= beats_per_measure - 1) begin
         beat_idx <= 0;
         downbeat <= 1;
       end else begin
